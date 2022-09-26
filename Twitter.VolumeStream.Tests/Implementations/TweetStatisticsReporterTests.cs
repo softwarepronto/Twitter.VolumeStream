@@ -7,36 +7,10 @@ namespace Twitter.VolumeStream.Tests.Implementations
         private readonly Mock<ILogger<TweetStatisticsReporter>> _loggerTweetStatisticsReporterMock =
                                 new Mock<ILogger<TweetStatisticsReporter>>();
 
-        const string StartTotalTweetsMarker = "Total tweets: ";
-
-        const string EndTotalTweetsMarker = ",";
-
-        const string StartHashtagsCountMarker = "Top ";
-
-        const string EndHashtagsCountMarker = " hashtags";
-
-        private static ulong GetNumber(string reportText, string startMarker, string endMarker)
-        {
-            var startIndex = reportText.IndexOf(startMarker) + startMarker.Length;
-            var length = reportText.IndexOf(endMarker) - startIndex;
-            var numberCandidateText = reportText.Substring(startIndex, length);
-
-            return ulong.Parse(numberCandidateText);
-        }
-
-        private static ulong GetTotalTweets(string reportText)
-        {
-            return GetNumber(reportText, StartTotalTweetsMarker, EndTotalTweetsMarker);
-        }
-
-        private static ulong GetHashtagCounts(string reportText)
-        {
-            return GetNumber(reportText, StartHashtagsCountMarker, EndHashtagsCountMarker);
-        }
-
         [Fact]
         public void ReportTest()
         {
+            var startTime = DateTime.UtcNow;
             var tweetStatisticsMock = new Mock<ITweetStatistics>();
             var reportSourceMock = new Mock<IReportSource>();
             var totalTweets = 0ul;
@@ -55,23 +29,38 @@ namespace Twitter.VolumeStream.Tests.Implementations
                                                 reportSourceMock.Object);
 
             tweetStatisticsReporter.Report();
-            Assert.Equal(totalTweets, GetTotalTweets(reportText));
-            Assert.Equal((ulong)hashtags.Count, GetHashtagCounts(reportText));
-            foreach (var hashtag in hashtags)
-            {
-                Assert.Contains(hashtag, reportText);
-            }
+
+            var endTime = DateTime.UtcNow;
+
+            _ = TweetStatisticsReporter.GetSecondsSinceLastReport(reportText);
+            Assert.Equal(totalTweets, TweetStatisticsReporter.GetTotalTweets(reportText));
+            Assert.Equal((ulong)hashtags.Count, TweetStatisticsReporter.GetTopHashtagCount(reportText));
+
+            var reportDateTime = TweetStatisticsReporter.GetReportDateTime(reportText);
+            var reportTopHashTags = TweetStatisticsReporter.GetTopHashtags(reportText);
+
+            Assert.Empty(reportTopHashTags);
+            Assert.True(reportDateTime >= startTime);
+            Assert.True(reportDateTime <= endTime);
 
             foreach (var hashtagCandidate in hashtagCandidates)
             {
                 totalTweets += 5ul;
                 hashtags.Add(new string(hashtagCandidate, hashTagLength));
+                startTime = DateTime.UtcNow;
                 tweetStatisticsReporter.Report();
-                Assert.Equal(totalTweets, GetTotalTweets(reportText));
-                Assert.Equal((ulong)hashtags.Count, GetHashtagCounts(reportText));
+                endTime = DateTime.UtcNow;
+                _ = TweetStatisticsReporter.GetSecondsSinceLastReport(reportText);
+                Assert.Equal(totalTweets, TweetStatisticsReporter.GetTotalTweets(reportText));
+                Assert.Equal((ulong)hashtags.Count, TweetStatisticsReporter.GetTopHashtagCount(reportText));
+                reportDateTime = TweetStatisticsReporter.GetReportDateTime(reportText);
+                reportTopHashTags = TweetStatisticsReporter.GetTopHashtags(reportText);
+                Assert.Equal(hashtags.Count, reportTopHashTags.Length);
+                Assert.True(reportDateTime >= startTime);
+                Assert.True(reportDateTime <= endTime);
                 foreach (var hashtag in hashtags)
                 {
-                    Assert.Contains(hashtag, reportText);
+                    Assert.Contains(hashtag, reportTopHashTags);
                 }
             }
         }

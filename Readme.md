@@ -1,3 +1,5 @@
+# Overview
+
 # Configuration
 
 All environment configuration values are prefixed by TWITTER_API_. The required
@@ -9,6 +11,14 @@ environment variables for the application are:
 The .editorconfig to enforce a coding style was downloaded from the 
 [dotnet/roslyn](https://github.com/dotnet/roslyn/blob/main/.editorconfig) project.
 
-# ToDo
-b* Timeout on read -- environment variable
-* URL to Config
+
+# Framework/Tools
+
+.NET 6, C# 10, Visual Studio 2022
+
+# Projects
+
+* Twitter.VolumeStream.Tests: xUnit units tests
+* Twitter.VolumneStrea.Dem: class libary that implements the challenge
+* Twitter.VolumneStream.Demo: console application that displays tweet count and top hashtags every 10 seconds.
+
