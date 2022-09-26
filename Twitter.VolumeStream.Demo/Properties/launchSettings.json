@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "Twitter.VolumeStream.Demo": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

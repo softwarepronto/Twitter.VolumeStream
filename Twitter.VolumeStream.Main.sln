@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Twitter.VolumeStream.Demo", "Twitter.VolumeStream.Demo\Twitter.VolumeStream.Demo.csproj", "{4B6840F5-A7EA-425C-9EEC-1EAA378AEF9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{7C7CA9D3-A364-4E64-92A4-03C044D232F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Twitter.VolumeStream.Tests", "Twitter.VolumeStream.Tests\Twitter.VolumeStream.Tests.csproj", "{062BB693-A688-4D87-96D9-E5B77DFAAB2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F79F1CD7-DC91-4EE6-9E95-442B742465EB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Coding Challenge Updated for JHA SW Dev Roles.pdf = Coding Challenge Updated for JHA SW Dev Roles.pdf
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Twitter.VolumeStream", "Twitter.VolumeStream\Twitter.VolumeStream.csproj", "{184F1C12-1DF6-4D22-837D-A5820B123BCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B6840F5-A7EA-425C-9EEC-1EAA378AEF9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B6840F5-A7EA-425C-9EEC-1EAA378AEF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B6840F5-A7EA-425C-9EEC-1EAA378AEF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B6840F5-A7EA-425C-9EEC-1EAA378AEF9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{062BB693-A688-4D87-96D9-E5B77DFAAB2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{062BB693-A688-4D87-96D9-E5B77DFAAB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{062BB693-A688-4D87-96D9-E5B77DFAAB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{062BB693-A688-4D87-96D9-E5B77DFAAB2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{184F1C12-1DF6-4D22-837D-A5820B123BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{184F1C12-1DF6-4D22-837D-A5820B123BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{184F1C12-1DF6-4D22-837D-A5820B123BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{184F1C12-1DF6-4D22-837D-A5820B123BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{062BB693-A688-4D87-96D9-E5B77DFAAB2F} = {7C7CA9D3-A364-4E64-92A4-03C044D232F8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9E26118-0122-40AE-9680-13D90A2D96DD}
+	EndGlobalSection
+EndGlobal
