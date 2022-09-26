@@ -1,6 +1,8 @@
 ﻿// Licensed to the softwarepronto.com blog under the GNU General Public License.
 
-const int ErrorStatus = 1;
+const int StatusSuccess = 1;
+const int StatusError = 1;
+var existStatus = StatusSuccess;
 
 try
 {
@@ -28,8 +30,7 @@ try
 catch (Exception ex)
 {
     Console.WriteLine($"{ex}");
-
-    return 1;
+    existStatus = StatusError;
 }
 
-return 0;
+return existStatus;
