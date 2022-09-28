@@ -1,7 +1,9 @@
 # Overview
 
 There are over 1600 lines of code. It is near-production quality but there should be
-more logging, more unit tests, etc. 
+more logging, more unit tests, etc. If this was production code, I would have used an 
+Azure Function to read the Volume Stream endpoint and implemented an Azure Web App
+Service.
 
 # Configuration
 
@@ -21,6 +23,5 @@ The .editorconfig to enforce a coding style was downloaded from the
 # Projects
 
 * Twitter.VolumeStream.Tests: xUnit unit tests
-* Twitter.VolumneStrea.Dem: class libary that implements the challenge
-* Twitter.VolumneStream.Demo: console application that displays tweet count and top hashtags every 10 seconds.
-
+* Twitter.VolumeStream.Demo: class library that implements the challenge
+* Twitter.VolumeStream.Demo: console application that displays tweet count and top hashtags every 10 seconds.
